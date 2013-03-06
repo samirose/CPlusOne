@@ -1,0 +1,216 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9BDCBF7116B1ADE80020AF75 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9BDCBF7016B1ADE80020AF75 /* main.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9BDCBF6A16B1ADE80020AF75 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		9BDCBF6C16B1ADE80020AF75 /* CPlusOne */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CPlusOne; sourceTree = BUILT_PRODUCTS_DIR; };
+		9BDCBF7016B1ADE80020AF75 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		9BDCBF7916B1AE4F0020AF75 /* entry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = entry.h; sourceTree = "<group>"; };
+		9BDCBF7A16B1AF3B0020AF75 /* immutable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = immutable.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9BDCBF6916B1ADE80020AF75 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9BDCBF6116B1ADE80020AF75 = {
+			isa = PBXGroup;
+			children = (
+				9BDCBF6F16B1ADE80020AF75 /* CPlusOne */,
+				9BDCBF6D16B1ADE80020AF75 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9BDCBF6D16B1ADE80020AF75 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9BDCBF6C16B1ADE80020AF75 /* CPlusOne */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9BDCBF6F16B1ADE80020AF75 /* CPlusOne */ = {
+			isa = PBXGroup;
+			children = (
+				9BDCBF7016B1ADE80020AF75 /* main.cpp */,
+				9BDCBF7916B1AE4F0020AF75 /* entry.h */,
+				9BDCBF7A16B1AF3B0020AF75 /* immutable.h */,
+			);
+			path = CPlusOne;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9BDCBF6B16B1ADE80020AF75 /* CPlusOne */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9BDCBF7616B1ADE80020AF75 /* Build configuration list for PBXNativeTarget "CPlusOne" */;
+			buildPhases = (
+				9BDCBF6816B1ADE80020AF75 /* Sources */,
+				9BDCBF6916B1ADE80020AF75 /* Frameworks */,
+				9BDCBF6A16B1ADE80020AF75 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CPlusOne;
+			productName = CPlusOne;
+			productReference = 9BDCBF6C16B1ADE80020AF75 /* CPlusOne */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9BDCBF6316B1ADE80020AF75 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "Sami Rosendahl";
+			};
+			buildConfigurationList = 9BDCBF6616B1ADE80020AF75 /* Build configuration list for PBXProject "CPlusOne" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 9BDCBF6116B1ADE80020AF75;
+			productRefGroup = 9BDCBF6D16B1ADE80020AF75 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9BDCBF6B16B1ADE80020AF75 /* CPlusOne */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9BDCBF6816B1ADE80020AF75 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9BDCBF7116B1ADE80020AF75 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		9BDCBF7416B1ADE80020AF75 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		9BDCBF7516B1ADE80020AF75 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		9BDCBF7716B1ADE80020AF75 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		9BDCBF7816B1ADE80020AF75 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9BDCBF6616B1ADE80020AF75 /* Build configuration list for PBXProject "CPlusOne" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9BDCBF7416B1ADE80020AF75 /* Debug */,
+				9BDCBF7516B1ADE80020AF75 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9BDCBF7616B1ADE80020AF75 /* Build configuration list for PBXNativeTarget "CPlusOne" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9BDCBF7716B1ADE80020AF75 /* Debug */,
+				9BDCBF7816B1ADE80020AF75 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9BDCBF6316B1ADE80020AF75 /* Project object */;
+}
