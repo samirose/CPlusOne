@@ -1,0 +1,11 @@
+CPlusOne implements an C++11 immutable wrapper for data structures with support for partial update.
+The implementation is in the file CPlusOne/immutable.h.
+
+A structure S wrapped with Immutable<S> is immutable. It supports member access using the ->
+operator and implements an implicit conversion back to S.
+
+The structure can be partially updated by
+calling set member function to it. Calls to set can be chained and the result can be assigned to a
+new Immutable<S> which will be a copy of the original with the fields set was called for updated.
+
+See CPlusOne/main.cpp for a test and usage example.
