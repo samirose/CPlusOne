@@ -21,6 +21,8 @@ int main(int argc, const char * argv[])
 
     Immutable<Entry> ie2 = ie1.set(&Entry::givenName, "Jackie")
                               .set(&Entry::familyName, std::string("Brown"));
+    assert(e.givenName == "John");
+    assert(e.familyName == "Doe");
     assert(ie1->givenName == "John");
     assert(ie1->familyName == "Doe");
     assert(ie2->givenName == "Jackie");
