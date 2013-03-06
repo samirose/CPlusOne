@@ -9,6 +9,10 @@
 #include "entry.h"
 #include "immutable.h"
 
+void test_conversion(const Entry& e) {
+    assert(e.familyName == "Brown");
+}
+
 int main(int argc, const char * argv[])
 {
     Entry e;
@@ -43,5 +47,6 @@ int main(int argc, const char * argv[])
     assert(ie4->numCallsTo == 42);
     assert(ie4->givenName == "Charlie");
     assert(ie4->familyName == "Brown");
+    test_conversion(ie4);
     return 0;
 }
