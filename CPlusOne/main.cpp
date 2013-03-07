@@ -115,6 +115,7 @@ int main(int argc, const char * argv[])
     test_substructure_mutation();
     test_mixed_field_types();
     test_conversion();
+    test_make_immutable_does_not_increase_copy_count();
     test_single_copy_taken_per_assignment_chain();
     return 0;
 }
