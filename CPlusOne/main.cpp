@@ -73,6 +73,32 @@ void test_conversion() {
     test_conversion(ie);
 }
 
+struct CopyCounted {
+    int val1, val2;
+    static int copyCount;
+    CopyCounted() : val1(0), val2(0) { }
+    CopyCounted(const CopyCounted& src)
+    : val1(src.val1), val2(src.val2) {
+        ++copyCount;
+    }
+};
+
+int CopyCounted::copyCount = 0;
+
+void test_single_copy_taken_per_assignment_chain() {
+    CopyCounted::copyCount = 0;
+    CopyCounted cc;
+    Immutable<CopyCounted> icc1(cc);
+    // Wrapping struct to immutable creates one copy
+    assert(CopyCounted::copyCount == 1);
+    Immutable<CopyCounted> icc2 = icc1.set(&CopyCounted::val1, 42)
+                                      .set(&CopyCounted::val2, 53);
+    assert(icc2->val1 == 42);
+    assert(icc2->val2 == 53);
+    // Although multiple fields were set, only one copy of struct is made
+    assert(CopyCounted::copyCount == 2);
+}
+
 int main(int argc, const char * argv[])
 {
     test_field_access_operator();
@@ -80,5 +106,6 @@ int main(int argc, const char * argv[])
     test_substructure_mutation();
     test_mixed_field_types();
     test_conversion();
+    test_single_copy_taken_per_assignment_chain();
     return 0;
 }
