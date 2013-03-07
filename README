@@ -7,6 +7,7 @@ using the -> operator and implements an implicit conversion back to S.
 The structure can be partially updated by calling set member function to it.
 Calls to set can be chained and the result can be assigned to a new
 Immutable<S> which will be a copy of the original with the fields set was
-called for updated with new values.
+called for updated with new values. The implementation is optimized to create
+only a single copy of the structure per setter chain.
 
 See CPlusOne/main.cpp for a test and usage example.
