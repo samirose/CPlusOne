@@ -56,7 +56,7 @@ public:
         return Mutator<S, T2, U2>(this->s, field, val, this);
     }
 
-    virtual void apply(S& to) const override {
+    void apply(S& to) const override {
         to.*field = val;
         if (prev)
             prev->apply(to);
