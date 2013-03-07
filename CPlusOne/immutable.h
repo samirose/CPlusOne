@@ -74,4 +74,9 @@ Mutator<S, T, U> Immutable<S>::set(T S::*field, const U& val) {
     return Mutator<S, T, U>(s, field, val, nullptr);
 }
 
+template<typename S>
+Immutable<S> make_immutable(const S& s) {
+    return Immutable<S>(s);
+}
+
 #endif

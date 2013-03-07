@@ -13,7 +13,7 @@ void test_field_access_operator() {
     Entry e;
     e.givenName = "John";
     e.familyName = "Doe";
-    Immutable<Entry> ie(e);
+    auto ie = make_immutable(e);
     assert(ie->givenName == "John");
     assert(ie->familyName == "Doe");
 }
@@ -22,7 +22,7 @@ void test_field_mutation() {
     Entry e;
     e.givenName = "John";
     e.familyName = "Doe";
-    Immutable<Entry> ie1(e);
+    auto ie1 = make_immutable(e);
     Immutable<Entry> ie2 = ie1.set(&Entry::givenName, "Jackie")  // Conversion const char* -> std::string should be applied
                               .set(&Entry::familyName, std::string("Brown"));
     assert(e.givenName == "John");
@@ -37,7 +37,7 @@ void test_substructure_mutation() {
     Entry e;
     e.givenName = "Jackie";
     e.familyName = "Brown";
-    Immutable<Entry> ie1(e);
+    auto ie1 = make_immutable(e);
     Immutable<Entry> ie2 = ie1.set(&Entry::address, Address { "Penny Lane", "12345", "London", "GB" });
     assert(ie1->address.city == "");
     assert(ie2->address.city == "London");
@@ -51,7 +51,7 @@ void test_mixed_field_types() {
     Entry e;
     e.givenName = "Jackie";
     e.familyName = "Brown";
-    Immutable<Entry> ie1(e);
+    auto ie1 = make_immutable(e);
     Immutable<Entry> ie2 = ie1.set(&Entry::numCallsTo, 42)
                               .set(&Entry::givenName, "Charlie");
     assert(ie1->numCallsTo == 0);
@@ -84,6 +84,15 @@ struct CopyCounted {
 };
 
 int CopyCounted::copyCount = 0;
+
+void test_make_immutable_does_not_increase_copy_count() {
+    CopyCounted::copyCount = 0;
+    CopyCounted cc;
+    Immutable<CopyCounted> icc = make_immutable(cc);
+    assert(icc->val1 == 0);
+    // Wrapping struct to immutable creates one copy
+    assert(CopyCounted::copyCount == 1);
+}
 
 void test_single_copy_taken_per_assignment_chain() {
     CopyCounted::copyCount = 0;
