@@ -108,6 +108,16 @@ void test_single_copy_taken_per_assignment_chain() {
     assert(CopyCounted::copyCount == 2);
 }
 
+void test_immutable_can_be_copied() {
+    Entry e;
+    e.givenName = "Jackie";
+    e.familyName = "Brown";
+    Immutable<Entry> ie1(e);
+    Immutable<Entry> ie2(ie1);
+    assert(ie2->givenName == "Jackie");
+    assert(ie2->familyName == "Brown");
+}
+
 int main(int argc, const char * argv[])
 {
     test_field_access_operator();
@@ -117,5 +127,6 @@ int main(int argc, const char * argv[])
     test_conversion();
     test_make_immutable_does_not_increase_copy_count();
     test_single_copy_taken_per_assignment_chain();
+    test_immutable_can_be_copied();
     return 0;
 }
