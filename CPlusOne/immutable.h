@@ -20,16 +20,14 @@ class Immutable {
 public:
     explicit Immutable(const S& s) : s(s) { }
     Immutable(const MutatorBase<S>& m);
+    // Assignment not supported to retain immutability
+    Immutable<S>& operator=(const Immutable<S>&) = delete;
 
     const S* operator->() const { return &s; }
     operator const S&() const { return s; }
 
     template<typename T, typename U>
     Mutator<S, T, U> set(T S::*field, const U& val);
-
-private:
-    // Assignment not supported to retain immutability
-    Immutable<S>& operator=(const Immutable<S>&);
 };
 
 template<typename S>
