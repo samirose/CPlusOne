@@ -12,7 +12,7 @@ template<typename S>
 class MutatorBase;
 
 template<typename S, typename T, typename U>
-class Mutator;
+class InitialMutator;
 
 template<typename S>
 class Immutable {
@@ -27,15 +27,14 @@ public:
     operator const S&() const { return s; }
 
     template<typename T, typename U>
-    Mutator<S, T, U> set(T S::*field, const U& val);
+    InitialMutator<S, T, U> set(T S::*field, const U& val);
 };
 
 template<typename S>
 class MutatorBase {
 public:
-    const S& s;
-    MutatorBase(const S& s) : s(s) { }
     virtual void apply(S& to) const = 0;
+    virtual const S& initial() const = 0;
 protected:
     ~MutatorBase() { }
 };
@@ -46,12 +45,12 @@ class Mutator : public MutatorBase<S> {
     const U& val;
     MutatorBase<S>* prev;
 public:
-    explicit Mutator(const S& s, T S::*field, const U& val, MutatorBase<S>* prev)
-        : MutatorBase<S>(s), field(field), val(val), prev(prev) { }
+    explicit Mutator(T S::*field, const U& val, MutatorBase<S>* prev)
+        : field(field), val(val), prev(prev) { }
 
     template<typename T2, typename U2>
     Mutator<S, T2, U2> set(T2 S::*field, const U2& val) {
-        return Mutator<S, T2, U2>(this->s, field, val, this);
+        return Mutator<S, T2, U2>(field, val, this);
     }
 
     void apply(S& to) const override {
@@ -59,17 +58,34 @@ public:
             prev->apply(to);
         to.*field = val;
     }
+
+    const S& initial() const override {
+        return prev->initial();
+    }
+};
+
+template<typename S, typename T, typename U>
+class InitialMutator : public Mutator<S, T, U> {
+    const S& s;
+public:
+    explicit InitialMutator(const S& s, T S::*field, const U& val)
+        : Mutator<S, T, U>(field, val, nullptr), s(s) { }
+
+    const S& initial() const override {
+        return s;
+    }
 };
 
 template<typename S>
-Immutable<S>::Immutable(const MutatorBase<S>& m) : Immutable(m.s) {
+Immutable<S>::Immutable(const MutatorBase<S>& m)
+    : s(m.initial()) {
     m.apply(s);
 }
 
 template<typename S>
 template<typename T, typename U>
-Mutator<S, T, U> Immutable<S>::set(T S::*field, const U& val) {
-    return Mutator<S, T, U>(s, field, val, nullptr);
+InitialMutator<S, T, U> Immutable<S>::set(T S::*field, const U& val) {
+    return InitialMutator<S, T, U>(this->s, field, val);
 }
 
 template<typename S>
