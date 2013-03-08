@@ -55,9 +55,9 @@ public:
     }
 
     void apply(S& to) const override {
-        to.*field = val;
         if (prev)
             prev->apply(to);
+        to.*field = val;
     }
 };
 

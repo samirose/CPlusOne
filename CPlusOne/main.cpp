@@ -33,6 +33,18 @@ void test_field_mutation() {
     assert(ie2->familyName == "Brown");
 }
 
+void test_field_mutation_preserves_ordering() {
+    Entry e;
+    e.givenName = "John";
+    e.familyName = "Doe";
+    auto ie1 = make_immutable(e);
+    Immutable<Entry> ie2 = ie1.set(&Entry::givenName, "Jackie")
+                              .set(&Entry::familyName, "Brown")
+                              .set(&Entry::givenName, "Charlie");
+    assert(ie2->givenName == "Charlie");
+    assert(ie2->familyName == "Brown");
+}
+
 void test_substructure_mutation() {
     Entry e;
     e.givenName = "Jackie";
@@ -122,6 +134,7 @@ int main(int argc, const char * argv[])
 {
     test_field_access_operator();
     test_field_mutation();
+    test_field_mutation_preserves_ordering();
     test_substructure_mutation();
     test_mixed_field_types();
     test_conversion();
